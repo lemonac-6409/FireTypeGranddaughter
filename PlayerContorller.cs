@@ -10,7 +10,54 @@ public class PlayerContorller : MonoBehaviour
     private Animator animator;
     public float moveSpeed = 5f;
     public float turnSpeed = 200f;
-    private GameObject rb;
+    private GameObject rb; 
+    //작업 시작합니다. (이채은)
+    float time;
+    public float speed;
+    public GameObject magic1;   //마법1(물)
+    public GameObject magic2;   //마법2(불)
+    public GameObject magic3;   //마법3(흙)
+    public GameObject magic4;   //마법4(바람)
+    public GameObject magic5;   //마법5(빛)
+	public Transform firePos;   //발사구(마법봉)
+    public class Shooter : MonoBehaviour
+
+ public class BulletController : MonoBehaviour
+ {
+    public float speed;
+    float time;
+
+    void start()
+    {
+        speed = 30.0f;  //speed 초기설정
+        time = 0;       //time 초기설정
+    }
+
+    void update()
+    {
+        FireBullet();
+        DestroyBullet();
+        //숫자키패드 1 입력
+         if (Input.GetKeyDown(Keycode.Keypad1)==true{
+
+         }
+        //숫자키패드 2 입력
+         if (Input.GetKeyDown(Keycode.Keypad2)==true{
+
+         }
+        //숫자키패드 3 입력
+         if (Input.GetKeyDown(Keycode.Keypad3)==true{
+
+         }
+        //숫자키패드 4 입력
+         if (Input.GetKeyDown(Keycode.Keypad4)==true{
+
+         }
+        //숫자키패성
+        time -= 0.3f;
+    }
+}
+
 
     //Inspertor 창과 Scene창에서 조정을 편리하게 하기 위해서 Strartingpoin를 만들어줍니다.
     [SerializeField] GameObject Startingpoint;
@@ -35,6 +82,8 @@ public class PlayerContorller : MonoBehaviour
         Move();
         Turn();
          //마법 발사 Animation을 찾는다면 넣읍시다.shot();
+	}
+}
         
     }
     void OnCollisionEnter(Collision other)
