@@ -10,7 +10,86 @@ public class PlayerContorller : MonoBehaviour
     private Animator animator;
     public float moveSpeed = 5f;
     public float turnSpeed = 200f;
-    private GameObject rb;
+    private GameObject rb; 
+    //작업 시작합니다. (이채은)
+    float time;
+    public float speed;
+    public GameObject magic1;   //마법1(물)
+    public GameObject magic2;   //마법2(불)
+    public GameObject magic3;   //마법3(흙)
+    public GameObject magic4;   //마법4(바람)
+    public GameObject magic5;   //마법5(빛)
+	public Transform firePos;   //발사구(마법봉)
+    public class Shooter : MonoBehaviour
+
+ public class BulletController : MonoBehaviour
+ {
+    public float speed;
+    float time;
+
+    void start()
+    {
+        speed = 30.0f;
+        time = 0;
+    }
+
+    void update()
+    {
+        FireBullet();
+        DestroyBullet();
+    }
+
+    void FireBullet()
+    {
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
+    }
+
+    void DestroyBullet()
+    {
+         time += Time.deltaTime;
+         if (time > 0.5f)
+         {
+             Destoy(GameObject);
+         }
+    }
+ }
+
+private void start()
+{
+    time = 0;
+    speed = 10.0;
+}
+
+private void update()
+{
+   Move();
+   FireBullet
+}
+
+public void Move()
+{
+   float x = Input.GetAxis("Horizontal") * speed * Time.delteTime;
+   float y = Input.GetAxis("Vertical") * speed * Time.delteTime;
+
+   transform.Translate(new Vector3(x, y, 0));
+
+   if (transform.position.x > limitMax.x)...
+   if (transform.position.y > limitMax.y)...
+   if (transform.position.x > limitMax.x)...
+   if (transform.position.y > limitMax.y)...
+}
+
+public void FireBullet()
+{
+    time += Time.deltatime;
+    Debug.Log("Fire" + time);
+    if (time > 0.03f)
+    {
+        Instantiate(prefabBullet, transform.position, Quaternion.identity);
+        time -+ 0.3f;
+    }
+}
+
 
     //Inspertor 창과 Scene창에서 조정을 편리하게 하기 위해서 Strartingpoin를 만들어줍니다.
     [SerializeField] GameObject Startingpoint;
@@ -35,6 +114,8 @@ public class PlayerContorller : MonoBehaviour
         Move();
         Turn();
          //마법 발사 Animation을 찾는다면 넣읍시다.shot();
+	}
+}
         
     }
     void OnCollisionEnter(Collision other)
